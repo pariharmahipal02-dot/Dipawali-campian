@@ -302,8 +302,14 @@
         const claimModal = document.getElementById('claim-modal');
         const dashboard = document.getElementById('dashboard-section');
         const heroCta = document.getElementById('hero-cta');
-        
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const verifyLoader = document.getElementById('verify-loader');
+        const actionButtons = document.getElementById('action-buttons');
+        const claimSection = document.getElementById('claim-section');
+
         let progress = 0;
+        let userRefId = "";
 
         function openLoginModal() {
             overlay.classList.remove('hidden');
@@ -325,72 +331,61 @@
             claimModal.classList.add('hidden');
         }
 
-        // Jab user Login submit karta hai
-        function handleLogin(e) {
-            e.preventDefault();
+        function handleLogin(event) {
+            event.preventDefault();
             const name = document.getElementById('userName').value;
             
-            // Random Referral ID generate karna
-            const refId = 'NEX' + Math.floor(1000 + Math.random() * 9000);
+            // Unique ID Generate (e.g. NEX7A2B)
+            const randomStr = Math.random().toString(36).substring(2, 6).toUpperCase();
+            userRefId = "NEX" + randomStr;
             
-            // Dashboard data update karna
-            document.getElementById('dash-name').innerText = `Welcome, ${name.split(' ')[0]}!`;
-            document.getElementById('dash-ref').innerText = refId;
+            document.getElementById('dash-name').innerText = "Welcome, " + name + "!";
+            document.getElementById('dash-ref').innerText = userRefId;
             
-            // Login modal aur Hero button hide karna, Dashboard show karna
             closeLoginModal();
             heroCta.classList.add('hidden');
             dashboard.classList.remove('hidden');
-            
-            // Dashboard par scroll karna
-            dashboard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // Jab user Share button dabata hai
         function triggerShare(type) {
-            if(progress >= 100) return;
-
-            // WhatsApp par share link open karna
-            const text = encodeURIComponent("Mujhe Nexite se ₹1000 cash mil gaya hai! Aap bhi is link se claim karein: https://nexite.in/offer");
-            const waUrl = `https://api.whatsapp.com/send?text=${text}`;
-            window.open(waUrl, '_blank');
-
-            // Loader show karna
-            const loader = document.getElementById('verify-loader');
-            const actionBtns = document.getElementById('action-buttons');
+            // Sahi referral link ban banane ka logic
+            const baseUrl = window.location.origin + window.location.pathname;
+            const shareUrl = baseUrl + "?ref=" + userRefId;
             
-            actionBtns.classList.add('hidden');
-            loader.classList.remove('hidden');
-            loader.classList.add('flex');
+            // WhatsApp Message Text
+            const message = encodeURIComponent("Mujhe Nexite ki taraf se ₹1000 cash mila! 🎇 Aap bhi apna free reward claim karein is link se: " + shareUrl);
+            
+            // WhatsApp open karna
+            window.open("https://api.whatsapp.com/send?text=" + message, '_blank');
 
-            // 3 second ka fake verification timeout
+            // Progress Bar Animation Logic
+            actionButtons.classList.add('hidden');
+            verifyLoader.classList.remove('hidden');
+            verifyLoader.classList.add('flex');
+
             setTimeout(() => {
-                loader.classList.add('hidden');
-                loader.classList.remove('flex');
+                verifyLoader.classList.add('hidden');
+                verifyLoader.classList.remove('flex');
+                actionButtons.classList.remove('hidden');
                 
-                // Progress badhana
-                const increment = type === 'group' ? 20 : 10;
-                progress += increment;
-                if(progress > 100) progress = 100;
-
-                // UI update karna
-                document.getElementById('progress-bar').style.width = `${progress}%`;
-                document.getElementById('progress-text').innerText = `${progress}% Completed`;
-
-                // Agar 100% ho gaya toh Claim button dikhana
-                if(progress >= 100) {
-                    document.getElementById('claim-section').classList.remove('hidden');
-                } else {
-                    actionBtns.classList.remove('hidden');
+                if (type === 'group') progress += 20;
+                else if (type === 'friend') progress += 10;
+                
+                if (progress > 100) progress = 100;
+                
+                progressBar.style.width = progress + "%";
+                progressText.innerText = progress + "% Completed";
+                
+                if (progress === 100) {
+                    actionButtons.classList.add('hidden');
+                    claimSection.classList.remove('hidden');
                 }
-            }, 3000); 
+            }, 2000);
         }
 
-        // Jab user UPI id daalkar Claim submit karta hai
-        function handleClaim(e) {
-            e.preventDefault();
-            const upi = document.getElementById('upiId').value;
-            alert(`Success! ₹1000 cash will be sent to ${upi} within 24 hours.`);
+        function handleClaim(event) {
+            event.preventDefault();
+            alert("Verification successful! Aapki details submit ho gayi hain.");
             closeClaimModal();
         }
     </script>
