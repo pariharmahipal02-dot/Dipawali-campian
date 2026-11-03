@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<!-- Google Analytics 4 - NEXITE -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SYW93025WQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-SYW93025WQ');
-</script>
+    
+    <!-- Google Analytics 4 - NEXITE -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYW93025WQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-SYW93025WQ');
+    </script>
+
     <title>Nexite Diwali Special Offer - Win ₹1000 Cash</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -86,9 +88,6 @@
         <div class="flex items-center gap-2 text-nred font-extrabold text-2xl tracking-tighter">
             <i class="fa-solid fa-gift text-nredlight"></i> NEXITE
         </div>
-        <div id="header-action">
-            <!-- Dynamic: Either Login button or User Profile Chip -->
-        </div>
     </header>
 
     <!-- Hero Section -->
@@ -104,7 +103,7 @@
             Apne doston ke sath khushiyan baantein aur claim karein ₹1000 ka cash prize. Direct aapke UPI ya Bank account me!
         </p>
         
-        <!-- Action Area (Changes based on login state) -->
+        <!-- Action Area -->
         <div id="hero-cta" class="relative z-20">
             <button onclick="openLoginModal()" class="bg-gradient-to-r from-ngold to-yellow-500 text-ndark font-extrabold text-lg px-10 py-4 rounded-2xl shadow-glow hover:scale-105 transition transform flex items-center justify-center gap-2 mx-auto w-11/12 max-w-sm">
                 Get Started Now <i class="fa-solid fa-arrow-right"></i>
@@ -173,7 +172,6 @@
 
     <!-- Main Content for Scrolling -->
     <main class="max-w-lg mx-auto px-5 py-12 space-y-12">
-        
         <!-- Rules -->
         <section>
             <h3 class="text-2xl font-extrabold text-ndark mb-6 flex items-center gap-2">How to Participate 📋</h3>
@@ -228,14 +226,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Warning / Trust Section -->
-        <section class="bg-yellow-50 p-5 rounded-2xl border-l-4 border-ngold shadow-sm">
-            <h4 class="font-extrabold text-yellow-800 text-sm mb-2"><i class="fa-solid fa-triangle-exclamation"></i> Important Notice</h4>
-            <p class="text-xs text-yellow-700 leading-relaxed">
-                Humara Smart Verification System back-button clicks aur fake shares ko track karta hai. Kripya message ko actual me send karein. Fake shares karne par account block ho jayega aur reward cancel kar diya jayega.
-            </p>
-        </section>
     </main>
 
     <!-- Grand Footer -->
@@ -247,19 +237,8 @@
                 <div class="text-ngold text-[10px] font-bold tracking-widest uppercase">Diwali Special Offer 2026</div>
             </div>
             
-            <div class="flex justify-center gap-6 mb-8 text-xl text-gray-400">
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-youtube"></i></a>
-            </div>
-
             <div class="border-t border-gray-800 pt-6 text-center text-[10px] text-gray-500 space-y-2">
-                <div class="flex justify-center gap-4 mb-2 font-semibold">
-                    <a href="#" class="hover:text-white">Terms & Conditions</a>
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Contact Us</a>
-                </div>
-                <p>This promotional giveaway is organized independently by Nexite. Ensure you read the rules before participating.</p>
+                <p>This promotional giveaway is organized independently by Nexite.</p>
                 <p class="text-gray-400 font-bold mt-2">© 2026 Nexite Official. All Rights Reserved.</p>
             </div>
         </div>
@@ -297,6 +276,7 @@
     <!-- Claim Reward Modal -->
     <div id="claim-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
         <div class="w-full max-w-sm bg-white rounded-3xl p-7 relative shadow-2xl border-4 border-ngold animate-pop">
+            <button onclick="closeClaimModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
             <div class="text-center mb-6 mt-2">
                 <div class="text-5xl mb-2">🎉</div>
                 <h2 class="text-2xl font-extrabold text-ndark">Claim ₹1000</h2>
@@ -306,208 +286,113 @@
             <form id="claimForm" onsubmit="handleClaim(event)">
                 <div class="mb-5">
                     <label class="block text-[10px] font-extrabold text-gray-600 mb-1 ml-1 uppercase tracking-wider">UPI ID or Account Number</label>
-                    <input type="text" id="upiId" required placeholder="e.g., yournumber@paytm" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm outline-none focus:border-green-500 transition text-center font-bold">
+                    <input type="text" id="upiId" required placeholder="e.g., yournumber@paytm" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3.5 text-sm outline-none focus:border-nred focus:bg-white transition">
                 </div>
-                <button type="submit" class="w-full bg-green-500 text-white font-extrabold text-lg py-3.5 rounded-xl shadow-lg hover:bg-green-600 transition flex justify-center items-center gap-2">
-                    <i class="fa-solid fa-paper-plane"></i> Submit Request
+                <button type="submit" class="w-full bg-nred text-white font-extrabold text-lg py-3.5 rounded-xl shadow-glow transition">
+                    Submit & Claim
                 </button>
             </form>
         </div>
     </div>
 
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        // --- 1. PERSISTENT STATE MANAGEMENT (LOCAL STORAGE) ---
-        let userState = {
-            isLoggedIn: false,
-            name: "",
-            phone: "",
-            refCode: "",
-            progress: 0,
-            status: "pending" // pending, completed, claimed
-        };
-
-        const LOCAL_STORAGE_KEY = 'nexite_diwali_data_2026';
-
-        // Load data on page refresh
-        function loadState() {
-            const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
-            if (saved) {
-                userState = JSON.parse(saved);
-                if (userState.isLoggedIn) {
-                    renderDashboard();
-                }
-            } else {
-                renderHeaderLoggedOut();
-            }
-        }
+        const overlay = document.getElementById('overlay');
+        const loginModal = document.getElementById('login-modal');
+        const claimModal = document.getElementById('claim-modal');
+        const dashboard = document.getElementById('dashboard-section');
+        const heroCta = document.getElementById('hero-cta');
         
-        function saveState() {
-            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(userState));
+        let progress = 0;
+
+        function openLoginModal() {
+            overlay.classList.remove('hidden');
+            loginModal.classList.remove('hidden');
         }
 
-        // --- 2. UI RENDER FUNCTIONS ---
-        function renderHeaderLoggedOut() {
-            document.getElementById('header-action').innerHTML = `
-                <button onclick="openLoginModal()" class="bg-nred text-white px-5 py-2 rounded-full text-xs font-extrabold shadow-md hover:bg-nredlight transition">LOGIN</button>
-            `;
+        function closeLoginModal() {
+            overlay.classList.add('hidden');
+            loginModal.classList.add('hidden');
         }
 
-        function renderDashboard() {
-            // Hide Hero CTA, Show Dashboard
-            document.getElementById('hero-cta').classList.add('hidden');
-            document.getElementById('dashboard-section').classList.remove('hidden');
-            
-            // Set User Details
-            document.getElementById('dash-name').innerText = `Hi, ${userState.name.split(' ')[0]}`;
-            document.getElementById('dash-ref').innerText = userState.refCode;
-            
-            // Header Profile Chip
-            document.getElementById('header-action').innerHTML = `
-                <div class="bg-gray-100 px-3 py-1.5 rounded-full text-[11px] font-extrabold text-gray-700 flex items-center gap-1.5 border border-gray-200">
-                    <i class="fa-solid fa-user-check text-nred"></i> ${userState.progress}%
-                </div>
-            `;
-            
-            updateProgressUI();
+        function openClaimModal() {
+            overlay.classList.remove('hidden');
+            claimModal.classList.remove('hidden');
         }
 
-        function updateProgressUI() {
-            document.getElementById('progress-text').innerText = `${userState.progress}% Completed`;
-            document.getElementById('progress-bar').style.width = `${userState.progress}%`;
-
-            if (userState.progress >= 100) {
-                document.getElementById('action-buttons').classList.add('hidden');
-                
-                if (userState.status === "claimed") {
-                    document.getElementById('claim-section').innerHTML = `
-                        <div class="bg-gray-100 border border-gray-300 text-gray-600 px-4 py-4 rounded-xl text-sm font-bold text-center">
-                            <i class="fa-solid fa-clock-rotate-left mb-1 text-xl"></i><br>
-                            Under Review.<br>Payment will be processed in 24 hrs.
-                        </div>
-                    `;
-                } else {
-                    document.getElementById('claim-section').classList.remove('hidden');
-                }
-            }
+        function closeClaimModal() {
+            overlay.classList.add('hidden');
+            claimModal.classList.add('hidden');
         }
 
-        // --- 3. MODAL CONTROLS ---
-        function openLoginModal() { 
-            if(userState.isLoggedIn) {
-                document.getElementById('dashboard-section').scrollIntoView({behavior: 'smooth'});
-                return;
-            }
-            document.getElementById('overlay').classList.remove('hidden'); 
-            document.getElementById('login-modal').classList.remove('hidden'); 
-        }
-        function closeLoginModal() { document.getElementById('overlay').classList.add('hidden'); document.getElementById('login-modal').classList.add('hidden'); }
-        function openClaimModal() { document.getElementById('overlay').classList.remove('hidden'); document.getElementById('claim-modal').classList.remove('hidden'); }
-        function closeClaimModal() { document.getElementById('overlay').classList.add('hidden'); document.getElementById('claim-modal').classList.add('hidden'); }
-
-        // --- 4. CORE LOGIC ---
+        // Jab user Login submit karta hai
         function handleLogin(e) {
             e.preventDefault();
-            userState.name = document.getElementById('userName').value;
-            userState.phone = document.getElementById('userPhone').value;
-            userState.refCode = `NEX${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
-            userState.progress = 0;
-            userState.isLoggedIn = true;
-            userState.status = "pending";
+            const name = document.getElementById('userName').value;
             
-            saveState();
+            // Random Referral ID generate karna
+            const refId = 'NEX' + Math.floor(1000 + Math.random() * 9000);
+            
+            // Dashboard data update karna
+            document.getElementById('dash-name').innerText = `Welcome, ${name.split(' ')[0]}!`;
+            document.getElementById('dash-ref').innerText = refId;
+            
+            // Login modal aur Hero button hide karna, Dashboard show karna
             closeLoginModal();
-            renderDashboard();
+            heroCta.classList.add('hidden');
+            dashboard.classList.remove('hidden');
             
-            // Scroll to dashboard
-            setTimeout(() => { document.getElementById('dashboard-section').scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 100);
+            // Dashboard par scroll karna
+            dashboard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // --- 5. STRICT SHARE TRACKING LOGIC ---
-        let shareClickTime = 0;
-
+        // Jab user Share button dabata hai
         function triggerShare(type) {
-            if (!userState.isLoggedIn) return;
+            if(progress >= 100) return;
 
-            const refUrl = `${window.location.origin}${window.location.pathname}?ref=${userState.refCode}`;
-            const message = `Bhai mujhe laga tha fraud hai par sach me mujhe ₹1000 cash mila hai! 😍🎉\n\nNexite ka Diwali Special Offer chal raha hai. Is link pe click karo aur apna cash claim karo 👇\n\n${refUrl}`;
+            // WhatsApp par share link open karna
+            const text = encodeURIComponent("Mujhe Nexite se ₹1000 cash mil gaya hai! Aap bhi is link se claim karein: https://nexite.in/offer");
+            const waUrl = `https://api.whatsapp.com/send?text=${text}`;
+            window.open(waUrl, '_blank');
+
+            // Loader show karna
+            const loader = document.getElementById('verify-loader');
+            const actionBtns = document.getElementById('action-buttons');
             
-            // Mark time of click and what amount they should get
-            shareClickTime = Date.now();
-            localStorage.setItem('pending_share_value', type === 'group' ? '20' : '10');
+            actionBtns.classList.add('hidden');
+            loader.classList.remove('hidden');
+            loader.classList.add('flex');
 
-            // Open WhatsApp Intent
-            window.location.href = `whatsapp://send?text=${encodeURIComponent(message)}`;
-        }
-
-        // When user comes back to the browser tab
-        document.addEventListener("visibilitychange", () => {
-            if (document.visibilityState === "visible") {
-                const pendingVal = localStorage.getItem('pending_share_value');
+            // 3 second ka fake verification timeout
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                loader.classList.remove('flex');
                 
-                if (pendingVal) {
-                    const timeAway = Date.now() - shareClickTime;
-                    localStorage.removeItem('pending_share_value');
-                    
-                    // Hide buttons, show loader
-                    document.getElementById('action-buttons').classList.add('hidden');
-                    document.getElementById('verify-loader').classList.remove('hidden');
-                    document.getElementById('verify-loader').classList.add('flex');
+                // Progress badhana
+                const increment = type === 'group' ? 20 : 10;
+                progress += increment;
+                if(progress > 100) progress = 100;
 
-                    setTimeout(() => {
-                        document.getElementById('verify-loader').classList.add('hidden');
-                        document.getElementById('verify-loader').classList.remove('flex');
-                        
-                        // STRICT CHECK: If they came back in less than 2.5 seconds, they didn't send it.
-                        if (timeAway < 2500) {
-                            document.getElementById('action-buttons').classList.remove('hidden');
-                            alert("⚠️ Verification Failed!\n\nAapne message ko WhatsApp par properly send nahi kiya. Kripya chat me send button zarur dabayein.");
-                        } else {
-                            // Success! Add progress
-                            document.getElementById('action-buttons').classList.remove('hidden');
-                            userState.progress += parseInt(pendingVal);
-                            if (userState.progress > 100) userState.progress = 100;
-                            
-                            saveState();
-                            updateProgressUI();
-                            renderDashboard(); // Re-render header chip
-                            
-                            if (userState.progress < 100) {
-                                // Mini toast
-                                showToast(`+${pendingVal}% Progress Added!`);
-                            } else {
-                                if(navigator.vibrate) navigator.vibrate([200, 100, 200]);
-                            }
-                        }
-                    }, 2000); // 2 second simulated checking delay
+                // UI update karna
+                document.getElementById('progress-bar').style.width = `${progress}%`;
+                document.getElementById('progress-text').innerText = `${progress}% Completed`;
+
+                // Agar 100% ho gaya toh Claim button dikhana
+                if(progress >= 100) {
+                    document.getElementById('claim-section').classList.remove('hidden');
+                } else {
+                    actionBtns.classList.remove('hidden');
                 }
-            }
-        });
-
-        function showToast(msg) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed top-20 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-2xl z-50 transition-opacity duration-300';
-            toast.innerHTML = `<i class="fa-solid fa-check-circle text-green-400"></i> ${msg}`;
-            document.body.appendChild(toast);
-            setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 2500);
+            }, 3000); 
         }
 
+        // Jab user UPI id daalkar Claim submit karta hai
         function handleClaim(e) {
             e.preventDefault();
             const upi = document.getElementById('upiId').value;
-            
-            // Mark as claimed
-            userState.status = "claimed";
-            saveState();
-            
+            alert(`Success! ₹1000 cash will be sent to ${upi} within 24 hours.`);
             closeClaimModal();
-            updateProgressUI();
-
-            alert(`✅ APPLICATION RECEIVED\n\nName: ${userState.name}\nUPI: ${upi}\n\nHumari admin team aapke shares check karegi. Sahi paye jane par 24 ghante me payment bhej di jayegi.`);
         }
-
-        // Init App
-        window.onload = loadState;
-
     </script>
 </body>
 </html>
